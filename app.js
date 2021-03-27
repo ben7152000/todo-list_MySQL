@@ -17,9 +17,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }))
 app.use(express.static('public'))
 
 // setting router
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
+require('./routes')(app)
 
 // listen server
 app.listen(PORT, () => {
