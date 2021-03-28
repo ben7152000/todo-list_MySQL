@@ -19,7 +19,7 @@ const todoController = {
     const name = req.body.name
     try {
       await Todo.create({ name, UserId })
-      res.redirect('/')
+      res.redirect('/todo')
     } catch (e) {
       console.log(e)
     }
@@ -43,7 +43,7 @@ const todoController = {
       todo.name = name
       todo.isDone = isDone === 'on'
       todo.save()
-      res.redirect('/')
+      res.redirect('/todo')
     } catch (e) {
       console.log(e)
     }
@@ -54,7 +54,7 @@ const todoController = {
     try {
       const todo = await Todo.findOne({ where: { userId, id } })
       await todo.destroy()
-      res.redirect('/')
+      res.redirect('/todo')
     } catch (e) {
       console.log(e)
     }

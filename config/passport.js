@@ -35,7 +35,7 @@ module.exports = app => {
     profileFields: ['email', 'displayName']
   }, (accessToken, refreshToken, profile, done) => {
     const { name, email } = profile._json
-    User.findOne({ where: { from: 'facebook' } })
+    User.findOne({ where: { email } })
       .then(user => {
         if (user) return done(null, user)
         const randomPassword = Math.random().toString(36).slice(-8)
@@ -45,8 +45,7 @@ module.exports = app => {
           .then(hash => User.create({
             name,
             email,
-            password: hash,
-            from: 'facebook'
+            password: hash
           }))
           .then(user => done(null, user))
           .catch(err => done(err, false))
@@ -61,7 +60,7 @@ module.exports = app => {
   }, (accessToken, refreshToken, profile, done) => {
     const { email } = profile._json
     const name = email.split('@')[0]
-    User.findOne({ where: { from: 'google' } })
+    User.findOne({ where: { email } })
       .then(user => {
         if (user) return done(null, user)
         const randomPassword = Math.random().toString(36).slice(-8)
