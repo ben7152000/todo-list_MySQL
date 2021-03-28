@@ -29,13 +29,24 @@ const todoController = {
     const id = req.params.id
     try {
       const todo = await Todo.findOne({ where: { id, UserId } })
-      res.render('../views/todo/edit', { todo })
+      res.render('../views/todo/edit', { todo: todo.get() })
     } catch (e) {
       console.log(e)
     }
   },
-  editTodo: (req, res) => {
-
+  editTodo: async (req, res) => {
+    const UserId = req.user.id
+    const id = req.params.id
+    const { name, isDone } = req.body
+    try {
+      const todo = await Todo.findOne({ where: { id, UserId } })
+      todo.name = name
+      todo.isDone = isDone === 'on'
+      todo.save()
+      res.redirect('/')
+    } catch (e) {
+      console.log(e)
+    }
   },
   deleteTodo: async (req, res) => {
     const userId = req.user.id
