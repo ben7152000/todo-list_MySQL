@@ -1,12 +1,12 @@
 const userController = {
   loginPage: (req, res) => {
-    res.send('login')
+    res.render('../views/user/login')
   },
   login: (req, res) => {
 
   },
   registerPage: (req, res) => {
-    res.send('register')
+    res.render('../views/user/register')
   },
   register: (req, res) => {
 
