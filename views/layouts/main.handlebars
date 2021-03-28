@@ -19,15 +19,14 @@
 
     <!--  Header  -->
     {{#if isAuthenticated}}
-      <header>
-        <a href="/">Todo List</a>
+      <header
+        class="h-16 w-full flex justify-between items-center px-16 bg-yellow-500 shadow-md">
+        <a href="/"
+          class="text-3xl font-extrabold text-gray-900 tracking-wide font-serif">Todo
+          List</a>
         <div>
-          <span>
-            {{#if isAuthenticated}}
-              {{ user.name }}
-            {{/if}}
-          </span>
-          <a href="/logout">Logout</a>
+          <a href="/logout"
+            class="appearance-none rounded-none block w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md hover:text-white hover:bg-yellow-600 hover:border-gray-500 focus:outline-none focus:border-gray-500 focus:z-10 ease-in-out duration-500 font-serif transition-colors tracking-wide sm:text-sm">Logout</a>
         </div>
       </header>
     {{/if}}
