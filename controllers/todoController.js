@@ -1,6 +1,6 @@
 const todoController = {
   getTodo: (req, res) => {
-    res.send('getTodo')
+    res.render('../views/todo')
   },
   createTodoPage: (req, res) => {
     res.send('create')
