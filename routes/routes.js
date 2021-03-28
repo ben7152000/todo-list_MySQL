@@ -12,7 +12,7 @@ router.get('/', checkNotAuthenticated, (req, res) => res.redirect('/login'))
 
 router.get('/todo', checkAuthenticator, todoController.getTodo)
 router.get('/todo/create', checkAuthenticator, todoController.createTodoPage)
-router.post('/todo.create', checkAuthenticator, todoController.createTodo)
+router.post('/todo/create', checkAuthenticator, todoController.createTodo)
 router.get('/todo/:id/edit', checkAuthenticator, todoController.editTodoPage)
 router.post('/todo/:id/edit', checkAuthenticator, todoController.editTodo)
 router.post('/todo/:id/delete', checkAuthenticator, todoController.deleteTodo)
